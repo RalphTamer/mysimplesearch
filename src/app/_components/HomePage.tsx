@@ -73,7 +73,13 @@ const HomePage = () => {
       )}
       <div className="py-2">
         {articles.map((article) => {
-          return <Article article={article} key={article.id} />;
+          return (
+            <Article
+              searchWord={searchValue}
+              article={article}
+              key={article.id}
+            />
+          );
         })}
       </div>
     </div>

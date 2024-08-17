@@ -1,7 +1,8 @@
 import { ArticlesDataType } from "../utils/utils";
-
+import Highlighter from "react-highlight-words";
 type Props = {
   article: ArticlesDataType[0];
+  searchWord: string;
 };
 const Article = (props: Props) => {
   const { article } = props;
@@ -13,10 +14,21 @@ const Article = (props: Props) => {
       }}
     >
       <div className="font-bold text-[22px] text-[#635f5f]">
-        {article.title}
+        <Highlighter
+          highlightClassName="YourHighlightClass"
+          searchWords={[props.searchWord]}
+          autoEscape={true}
+          textToHighlight={article.title}
+        />
       </div>
+
       <div className="font-bold text-[14px]">{article.date}</div>
-      <div>{article.content}</div>
+      {/* <div>{article.content}</div> */}
+      <Highlighter
+        searchWords={[props.searchWord]}
+        autoEscape={true}
+        textToHighlight={article.content}
+      />
     </div>
   );
 };
